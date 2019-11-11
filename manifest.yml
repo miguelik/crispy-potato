@@ -5,6 +5,7 @@ applications:
   disk_quota: 1024M
   instances: 1
   host: P10b
+  path: GetStartedTomcat\target\AsrTomcatEjemploCloudant.war
   domain: eu-gb.cf.appdomain.cloud
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   services:
