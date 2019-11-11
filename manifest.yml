@@ -11,3 +11,10 @@ applications:
   - cloudantNoSQLDB
   - Cloudant-hi
   disk_quota: 1024M
+- name: P10b
+  memory: 640M
+  disk_quota: 1024M
+  instances: 1
+  host: P10b
+  domain: eu-gb.cf.appdomain.cloud
+  buildpack: java_buildpack
