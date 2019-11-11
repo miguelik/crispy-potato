@@ -1,11 +1,11 @@
 ---
 applications:
-- name: asrTomcatEjemploCloudant
-  random-route: false
-  path: target/asrTomcatEjemploCloudant.war
+- name: P10b
   memory: 640M
+  disk_quota: 1024M
   instances: 1
-  host: asrTomcatEjemploCloudant1234
-  domain: eu-gb.mybluemix.net
+  host: P10b
+  domain: eu-gb.cf.appdomain.cloud
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
   services:
-  - cloudantNoSQLDB
+  - Cloudant-jc
