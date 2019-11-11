@@ -9,4 +9,5 @@ applications:
   domain: eu-gb.mybluemix.net
   services:
   - cloudantNoSQLDB
+  - Cloudant-hi
   disk_quota: 1024M
