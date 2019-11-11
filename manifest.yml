@@ -17,4 +17,4 @@ applications:
   instances: 1
   host: P10b
   domain: eu-gb.cf.appdomain.cloud
-  buildpack:  https://github.com/cloudfoundry/java-buildpack.git
+
