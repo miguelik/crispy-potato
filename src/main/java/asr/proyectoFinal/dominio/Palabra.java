@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package wasdev.sample;
+package asr.proyectoFinal.dominio;
 
 /**
  * Represents a Visitor document stored in Cloudant.
  */
 
-public class Visitor {
+public class Palabra {
 	private String _id;
 	private String _rev;
 	private String name = null;
 
-	public Visitor() {
+	public Palabra() {
 		this.name = "";
 	}
 
@@ -83,6 +83,12 @@ public class Visitor {
 	 */
 	public void setName(String visitorName) {
 		this.name = visitorName;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return name;
 	}
 
 }

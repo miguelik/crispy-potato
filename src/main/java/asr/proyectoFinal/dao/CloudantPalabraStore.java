@@ -1,3 +1,4 @@
+package asr.proyectoFinal.dao;
 /*******************************************************************************
  * Copyright (c) 2017 IBM Corp.
  *
@@ -13,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/ 
-package wasdev.sample.store;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,14 +25,14 @@ import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
 import com.google.gson.JsonObject;
 
-import wasdev.sample.Visitor;
+import asr.proyectoFinal.dominio.Palabra;
 
-public class CloudantVisitorStore implements VisitorStore{
-	
+public class CloudantPalabraStore
+{
 	private Database db = null;
 	private static final String databaseName = "mydb";
 	
-	public CloudantVisitorStore(){
+	public CloudantPalabraStore(){
 		CloudantClient cloudant = createClient();
 		if(cloudant!=null){
 		 db = cloudant.database(databaseName, true);
@@ -76,45 +76,41 @@ public class CloudantVisitorStore implements VisitorStore{
 		}
 	}
 	
-	@Override
-	public Collection<Visitor> getAll(){
-        List<Visitor> docs;
+	public Collection<Palabra> getAll(){
+        List<Palabra> docs;
 		try {
-			docs = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse().getDocsAs(Visitor.class);
+			docs = db.getAllDocsRequestBuilder().includeDocs(true).build().getResponse().getDocsAs(Palabra.class);
 		} catch (IOException e) {
 			return null;
 		}
         return docs;
 	}
 
-	@Override
-	public Visitor get(String id) {
-		return db.find(Visitor.class, id);
+	
+	public Palabra get(String id) {
+		return db.find(Palabra.class, id);
 	}
 
-	@Override
-	public Visitor persist(Visitor td) {
+	
+	public Palabra persist(Palabra td) {
 		String id = db.save(td).getId();
-		return db.find(Visitor.class, id);
+		return db.find(Palabra.class, id);
 	}
 
-	@Override
-	public Visitor update(String id, Visitor newVisitor) {
-		Visitor visitor = db.find(Visitor.class, id);
-		visitor.setName(newVisitor.getName());
+	public Palabra update(String id, Palabra newPalabra) {
+		Palabra visitor = db.find(Palabra.class, id);
+		visitor.setName(newPalabra.getName());
 		db.update(visitor);
-		return db.find(Visitor.class, id);
+		return db.find(Palabra.class, id);
 		
 	}
 
-	@Override
 	public void delete(String id) {
-		Visitor visitor = db.find(Visitor.class, id);
+		Palabra visitor = db.find(Palabra.class, id);
 		db.remove(id, visitor.get_rev());
 		
 	}
 
-	@Override
 	public int count() throws Exception {
 		return getAll().size();
 	}
